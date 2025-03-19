@@ -38,8 +38,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnGoalSetting.setOnClickListener {
-            startActivity(Intent(this, GoalSettingActivity::class.java))
+            val intent = Intent(this, GoalSettingActivity::class.java)
+            startActivity(intent)
         }
+
 
         btnLogout.setOnClickListener {
             FirebaseAuth.getInstance().signOut()

@@ -45,6 +45,26 @@
         android:background="@android:color/darker_gray"
         android:textColor="@android:color/black"/>
 
+    <!-- Start Date Button -->
+    <Button
+        android:id="@+id/btnStartDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Start Date"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="8dp"/>
+
+    <!-- End Date Button -->
+    <Button
+        android:id="@+id/btnEndDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select End Date"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="8dp"/>
+
     <Button
         android:id="@+id/btnAddGoal"
         android:layout_width="match_parent"
