@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "726302189673",
+    "project_id": "health-and-wellbeing-app-a05f3",
+    "storage_bucket": "health-and-wellbeing-app-a05f3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:726302189673:android:33170cd277be1bf20d5af8",
+        "android_client_info": {
+          "package_name": "com.example.healthandwellbeingapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcqwuo2eDmGyvgfWPgqSalgfGGcT_eOVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
