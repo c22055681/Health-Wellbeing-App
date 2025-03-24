@@ -34,7 +34,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnNutritionTracking.setOnClickListener {
-            startActivity(Intent(this, NutritionTrackingActivity::class.java))
+            val intent = Intent(this, NutritionTrackingActivity::class.java)
+            startActivity(intent)
         }
 
         btnGoalSetting.setOnClickListener {

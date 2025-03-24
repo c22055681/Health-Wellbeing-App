@@ -1,6 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:padding="12dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lifting Support"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_marginBottom="16dp" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alignmentMode="alignMargins"
+            android:columnCount="2"
+            android:columnOrderPreserved="false"
+            android:rowCount="2">
+
+            <!-- SHOULDERS -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="8dp"
+                android:layout_columnWeight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <VideoView
+                        android:id="@+id/videoShoulders"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp" />
+
+                    <Button
+                        android:id="@+id/btnShouldersSplit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Shoulders Split"
+                        android:layout_marginTop="8dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- LEGS -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="8dp"
+                android:layout_columnWeight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <VideoView
+                        android:id="@+id/videoLegs"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp" />
+
+                    <Button
+                        android:id="@+id/btnLegsSplit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Legs Split"
+                        android:layout_marginTop="8dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- BACK & BICEPS -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="8dp"
+                android:layout_columnWeight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <VideoView
+                        android:id="@+id/videoBackBiceps"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp" />
+
+                    <Button
+                        android:id="@+id/btnBackBicepsSplit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Back &amp; Biceps Split"
+                        android:layout_marginTop="8dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- CHEST & TRICEPS -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="8dp"
+                android:layout_columnWeight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <VideoView
+                        android:id="@+id/videoChestTriceps"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp" />
+
+                    <Button
+                        android:id="@+id/btnChestTricepsSplit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Chest &amp; Triceps Split"
+                        android:layout_marginTop="8dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </GridLayout>
+    </LinearLayout>
+</ScrollView>

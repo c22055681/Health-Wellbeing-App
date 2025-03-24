@@ -4,5 +4,12 @@
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
     <string name="login_text">Login</string>
+    <string name="goal_details">%1$s: %2$.2f / %3$.2f\nTarget Daily Improvement: %4$.2f</string>
+    <string name="nutrition_tracking">Nutrition Tracking</string>
+    <string name="search_food_hint">Search for food...</string>
+    <string name="search">Search</string>
+    <string name="nutrition_results_description">Search results for nutrition information</string>
+
+
 
 </resources>

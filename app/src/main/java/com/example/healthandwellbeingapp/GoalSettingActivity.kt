@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -12,6 +14,8 @@ class GoalSettingActivity : AppCompatActivity() {
 
     private val goals = mutableListOf<Goal>()
     private lateinit var goalListContainer: LinearLayout
+    private val db = FirebaseFirestore.getInstance()
+    private val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,10 +68,19 @@ class GoalSettingActivity : AppCompatActivity() {
                     dailyImprovement
                 )
 
-                goals.add(goal)
-                addGoalView(goal)
+                val uid = auth.currentUser?.uid ?: return@setOnClickListener
+                db.collection("users").document(uid).collection("goals").add(goal)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Goal saved!", Toast.LENGTH_SHORT).show()
+                        addGoalView(goal)
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(this, "Failed: ${e.message}", Toast.LENGTH_LONG).show()
+                    }
             }
         }
+
+        loadGoals()
     }
 
     private fun addGoalView(goal: Goal) {
@@ -77,56 +90,49 @@ class GoalSettingActivity : AppCompatActivity() {
         }
 
         val goalTextView = TextView(this).apply {
-            text = "${goal.name}: ${goal.currentValue} / ${goal.targetValue}\n" +
-                    "Target Daily Improvement: ${"%.2f".format(goal.dailyImprovement)}"
+            text = getString(R.string.goal_details, goal.name, goal.currentValue, goal.targetValue, goal.dailyImprovement)
             textSize = 18f
         }
 
+
+
         val progressBar = ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal).apply {
-            max = (goal.targetValue - goal.startValue).toInt()
-            progress = (goal.currentValue - goal.startValue).toInt()
+                max = (goal.targetValue - goal.startValue).toInt()
+                progress = (goal.currentValue - goal.startValue).toInt()
+            }
+
+            goalLayout.apply {
+                addView(goalTextView)
+                addView(progressBar)
+            }
+
+            goalListContainer.addView(goalLayout)
         }
 
-        val editGoalInput = EditText(this).apply {
-            hint = "Enter new value"
-            visibility = View.GONE
-        }
-
-        val btnUpdateGoal = Button(this).apply {
-            text = "Update Goal"
-            setOnClickListener {
-                if (editGoalInput.visibility == View.GONE) {
-                    editGoalInput.visibility = View.VISIBLE
-                } else {
-                    val newValue = editGoalInput.text.toString().toFloatOrNull()
-                    if (newValue != null && newValue <= goal.targetValue) {
-                        goal.currentValue = newValue
-                        goalTextView.text = "${goal.name}: ${goal.currentValue} / ${goal.targetValue}\n" +
-                                "Target Daily Improvement: ${"%.2f".format(goal.dailyImprovement)}"
-                        progressBar.progress = (goal.currentValue - goal.startValue).toInt()
-                        editGoalInput.visibility = View.GONE
+        private fun loadGoals() {
+            val uid = auth.currentUser?.uid ?: return
+            db.collection("users").document(uid).collection("goals")
+                .get()
+                .addOnSuccessListener { documents ->
+                    goalListContainer.removeAllViews()
+                    for (document in documents) {
+                        val goal = document.toObject(Goal::class.java)
+                        goals.add(goal)
+                        addGoalView(goal)
                     }
                 }
-            }
+                .addOnFailureListener { e ->
+                    Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                }
         }
-
-        goalLayout.apply {
-            addView(goalTextView)
-            addView(progressBar)
-            addView(editGoalInput)
-            addView(btnUpdateGoal)
-        }
-
-        goalListContainer.addView(goalLayout)
     }
-}
 
-data class Goal(
-    val name: String,
-    val startValue: Float,
-    val targetValue: Float,
-    var currentValue: Float,
-    val startDate: Long,
-    val endDate: Long,
-    val dailyImprovement: Float
-)
+    data class Goal(
+        val name: String = "",
+        val startValue: Float = 0f,
+        val targetValue: Float = 0f,
+        var currentValue: Float = 0f,
+        val startDate: Long = 0L,
+        val endDate: Long = 0L,
+        val dailyImprovement: Float = 0f
+    )
