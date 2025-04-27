@@ -9,6 +9,14 @@
     <string name="search_food_hint">Search for food...</string>
     <string name="search">Search</string>
     <string name="nutrition_results_description">Search results for nutrition information</string>
+    <string name="search_hint">Search Food</string>
+    <string name="search_button_text">Search</string>
+    <string name="Todays_Intake">Todays_Intake</string>
+    <string name="calories_label">Calories: 0</string>
+    <string name="protein_label">Protein: 0g</string>
+    <string name="carbs_label">Carbs: 0g</string>
+    <string name="fats_label">Fats: 0g</string>
+
 
 
 

@@ -1,89 +1,122 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@android:color/white">
+    tools:context=".goals.GoalSettingActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Set Your Goals"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        android:layout_gravity="center" />
-
-    <EditText
-        android:id="@+id/goalName"
+    <!-- Top App Bar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Goal Name"
-        android:padding="12dp"
-        android:background="@android:color/darker_gray"
-        android:textColor="@android:color/black"/>
+        android:background="#2C3E50"
+        app:title="Goal Setting"
+        app:titleTextColor="#FFFFFF"
+        app:navigationIcon="@drawable/ic_home"
+        app:menu="@menu/top_app_bar_menu"
+        app:titleCentered="true"/>
 
-    <EditText
-        android:id="@+id/startValue"
+
+    <!-- Main Content Container -->
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter Starting Value"
-        android:inputType="numberDecimal"
-        android:padding="12dp"
-        android:background="@android:color/darker_gray"
-        android:textColor="@android:color/black"/>
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <EditText
-        android:id="@+id/goalValue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter Target Goal Value"
-        android:inputType="numberDecimal"
-        android:padding="12dp"
-        android:background="@android:color/darker_gray"
-        android:textColor="@android:color/black"/>
-
-    <!-- Start Date Button -->
-    <Button
-        android:id="@+id/btnStartDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Select Start Date"
-        android:backgroundTint="@android:color/holo_blue_light"
-        android:textColor="@android:color/white"
-        android:layout_marginTop="8dp"/>
-
-    <!-- End Date Button -->
-    <Button
-        android:id="@+id/btnEndDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Select End Date"
-        android:backgroundTint="@android:color/holo_blue_light"
-        android:textColor="@android:color/white"
-        android:layout_marginTop="8dp"/>
-
-    <Button
-        android:id="@+id/btnAddGoal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add Goal"
-        android:backgroundTint="@android:color/holo_blue_dark"
-        android:textColor="@android:color/white"
-        android:layout_marginTop="12dp"/>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
-
-        <LinearLayout
-            android:id="@+id/goalListContainer"
+        <!-- Background Image -->
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+            android:layout_height="match_parent"
+            android:src="@drawable/background"
+            android:scaleType="centerCrop"
+            android:contentDescription="Background"
+            android:alpha="0.8" />
 
+        <!-- Optional Gradient Overlay -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient_overlay" />
+
+        <!-- Foreground Form and Recycler -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <EditText
+                    android:id="@+id/goalName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Goal Name"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#B3FFFFFF"
+                    android:background="#66000000"
+                    android:padding="12dp" />
+
+                <EditText
+                    android:id="@+id/startValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Start Value"
+                    android:inputType="numberDecimal"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#B3FFFFFF"
+                    android:background="#66000000"
+                    android:padding="12dp" />
+
+                <EditText
+                    android:id="@+id/goalValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Target Value"
+                    android:inputType="numberDecimal"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#B3FFFFFF"
+                    android:background="#66000000"
+                    android:padding="12dp" />
+
+                <Button
+                    android:id="@+id/btnStartDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select Start Date"
+                    android:backgroundTint="#2C3E50"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginTop="8dp" />
+
+                <Button
+                    android:id="@+id/btnEndDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select End Date"
+                    android:backgroundTint="#2C3E50"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginTop="8dp" />
+
+                <Button
+                    android:id="@+id/btnAddGoal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Add Goal"
+                    android:backgroundTint="#2C3E50"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginTop="12dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerGoals"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp" />
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
 </LinearLayout>

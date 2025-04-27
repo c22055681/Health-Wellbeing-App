@@ -4,6 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="teal_700">#00897B</color>
     <color name="colorPrimary">#6200EE</color>
-
+    <color name="dim_blue">#FFE0E0FF</color>
 
 </resources>

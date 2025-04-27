@@ -48,7 +48,6 @@ class RegisterActivity : AppCompatActivity() {
 
         // Login button placeholder
         btnLogin.setOnClickListener {
-            // Future implementation: Navigate to Login Activity
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
@@ -58,19 +57,12 @@ class RegisterActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(
-                        this,
-                        "Registration successful! Welcome!",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this, "Registration successful! Welcome!",
+                        Toast.LENGTH_SHORT).show()
 
-                    // Future implementation: Navigate user to the main/home activity after registration
                 } else {
-                    Toast.makeText(
-                        this,
-                        "Registration failed: ${task.exception?.message}",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Toast.makeText(this, "Registration failed: ${task.exception?.message}",
+                        Toast.LENGTH_LONG).show()
                 }
             }
     }
