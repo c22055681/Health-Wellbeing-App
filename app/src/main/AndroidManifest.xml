@@ -26,17 +26,17 @@
         </activity>
 
         <!-- Main Activity -->
-        <activity
-            android:name=".MainActivity"
-            android:exported="false"/>
+        <activity android:name=".MainActivity" android:exported="false"/>
+        <activity android:name=".MacroDashboardActivity" />
 
         <!-- Login Activity -->
         <activity
             android:name=".LoginActivity"
             android:exported="false"/>
         <activity android:name=".goals.GoalSettingActivity" android:exported="false"/>
-        <activity android:name="WeightliftingActivity" android:exported="false"/>
+        <activity android:name=".WeightliftingActivity" android:exported="false"/>
         <activity android:name=".NutritionTrackingActivity" android:exported="false"/>
+
 
 
 

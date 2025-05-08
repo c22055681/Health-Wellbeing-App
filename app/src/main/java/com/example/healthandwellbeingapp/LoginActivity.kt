@@ -17,7 +17,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var prefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Load dark mode preference before super.onCreate if needed
         prefs = getSharedPreferences("app_settings", MODE_PRIVATE)
         val isDarkMode = prefs.getBoolean("dark_mode", false)
         AppCompatDelegate.setDefaultNightMode(
@@ -65,9 +64,7 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 } else {
-                    Toast.makeText(
-                        this,
-                        "Login Failed: ${task.exception?.message}",
+                    Toast.makeText(this, "Login Failed: ${task.exception?.message}",
                         Toast.LENGTH_LONG
                     ).show()
                 }

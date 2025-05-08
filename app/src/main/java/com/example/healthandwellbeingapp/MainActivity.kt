@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         val toolbar = findViewById<MaterialToolbar>(R.id.topAppBar)
 
         toolbar.setNavigationOnClickListener {
-            // Already on MainActivity – do nothing or refresh
         }
 
         toolbar.setOnMenuItemClickListener { item ->

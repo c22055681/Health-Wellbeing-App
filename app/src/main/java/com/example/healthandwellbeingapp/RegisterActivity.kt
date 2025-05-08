@@ -17,10 +17,8 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
 
-        // Linking UI elements
         val txtEmail = findViewById<EditText>(R.id.txtEmail)
         val txtPass = findViewById<EditText>(R.id.txtPass)
         val txtConfirmPass = findViewById<EditText>(R.id.txtConfirmPass)
@@ -46,7 +44,7 @@ class RegisterActivity : AppCompatActivity() {
             registerUser(email, password)
         }
 
-        // Login button placeholder
+        // Login button
         btnLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)

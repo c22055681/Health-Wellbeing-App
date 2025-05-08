@@ -1,197 +1,165 @@
-<LinearLayout
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@android:color/white">
+    android:layout_height="match_parent">
 
-    <!-- Title -->
-    <TextView
+    <!-- Background Image -->
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nutrition Tracking"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:layout_marginBottom="12dp" />
+        android:layout_height="match_parent"
+        android:src="@drawable/background"
+        android:scaleType="centerCrop"
+        android:contentDescription="Background"
+        android:alpha="0.8" />
 
-    <!-- Search Bar -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/editSearchFood"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:hint="Search Food"
-            android:autofillHints="foodName"
-            android:inputType="text" />
-
-        <Button
-            android:id="@+id/btnSearch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Search"
-            android:textColor="@android:color/white"
-            android:backgroundTint="@color/teal_700" />
-    </LinearLayout>
-
-    <!-- Search Results -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="12dp">
-
-        <LinearLayout
-            android:id="@+id/resultsContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
-
-    <!-- Divider -->
+    <!-- Gradient Overlay -->
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#CCCCCC"
-        android:layout_marginVertical="10dp"/>
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_overlay" />
 
-    <!-- Today's Intake Section -->
-    <TextView
+    <!-- Main Content -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Todays_Intake"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@android:color/transparent">
 
-    <!-- Daily Total Macros -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="#FAFAFA"
-        android:padding="8dp">
-
-        <LinearLayout
-            android:id="@+id/selectedFoodsContainer"
+        <!-- Title -->
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+            android:text="Nutrition Tracking"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="12dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:weightSum="4">
-
-        <TextView
-            android:id="@+id/totalCalories"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        <!-- Search Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Calories: 0"
-            android:textAlignment="center"/>
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/totalProtein"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Protein: 0g"
-            android:textAlignment="center"/>
+            <EditText
+                android:textColorHint="@android:color/white"
+                android:id="@+id/editSearchFood"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Search Food"
+                android:autofillHints="foodName"
+                android:inputType="text"
+                android:backgroundTint="@android:color/white"
+                android:textColor="@android:color/black" />
 
-        <TextView
-            android:id="@+id/totalCarbs"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Carbs: 0g"
-            android:textAlignment="center"/>
+            <Button
+                android:id="@+id/btnSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Search"
+                android:textColor="@android:color/white"
+                android:backgroundTint="@color/teal_700" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/totalFats"
-            android:layout_width="0dp"
+        <!-- Search Results -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
+            android:layout_marginTop="12dp">
+
+            <LinearLayout
+                android:id="@+id/resultsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CCCCCC"
+            android:layout_marginVertical="10dp" />
+
+        <!-- Set Daily Goals Section -->
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fats: 0g"
-            android:textAlignment="center"/>
+            android:text="Set Daily Goals"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <EditText
+                android:textColorHint="@android:color/white"
+                android:id="@+id/goalCalories"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Cal"
+                android:inputType="number"
+                android:backgroundTint="@android:color/white"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:textColorHint="@android:color/white"
+                android:id="@+id/goalProtein"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Protein"
+                android:inputType="numberDecimal"
+                android:backgroundTint="@android:color/white"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:textColorHint="@android:color/white"
+                android:id="@+id/goalCarbs"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Carbs"
+                android:inputType="numberDecimal"
+                android:backgroundTint="@android:color/white"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:textColorHint="@android:color/white"
+                android:id="@+id/goalFats"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Fats"
+                android:inputType="numberDecimal"
+                android:backgroundTint="@android:color/white"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <!-- Button to View Macro Dashboard -->
+        <Button
+            android:id="@+id/btnViewDashboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Macro Dashboard"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#2C3E50"
+            android:textColor="@android:color/white" />
+
     </LinearLayout>
 
-    <!-- Set Daily Goals Section -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Set Daily Goals"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:layout_marginTop="16dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <EditText
-            android:id="@+id/goalCalories"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:hint="Cal"
-            android:inputType="number" />
-
-        <EditText
-            android:id="@+id/goalProtein"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:hint="Protein"
-            android:inputType="numberDecimal" />
-
-        <EditText
-            android:id="@+id/goalCarbs"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:hint="Carbs"
-            android:inputType="numberDecimal" />
-
-        <EditText
-            android:id="@+id/goalFats"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:hint="Fats"
-            android:inputType="numberDecimal" />
-    </LinearLayout>
-
-    <!-- Daily Goals Progress - Bar Chart -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Daily Goals Progress"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:layout_marginTop="16dp" />
-
-    <com.github.mikephil.charting.charts.HorizontalBarChart
-        android:id="@+id/macroBarChart"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="8dp" />
-
-
-
-</LinearLayout>
+</FrameLayout>

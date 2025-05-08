@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MacroDashboardActivity">
+
+    <!-- Background Image -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background"
+        android:scaleType="centerCrop"
+        android:contentDescription="Background"
+        android:alpha="0.8" />
+
+    <!-- Optional Gradient Overlay (for better contrast) -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_overlay" />
+
+    <!-- Main Content -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <!-- Macro Bar Chart -->
+        <com.github.mikephil.charting.charts.HorizontalBarChart
+            android:id="@+id/macroBarChart"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Divider Line -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#CCCCCC"
+            app:layout_constraintTop_toBottomOf="@id/macroBarChart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Title for Today's Intake -->
+        <TextView
+            android:id="@+id/tvTodaysIntake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Today's Intake"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/macroBarChart"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Today's Intake List -->
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/tvTodaysIntake"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnBack"
+            android:layout_marginBottom="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Selected foods shown here -->
+                <LinearLayout
+                    android:id="@+id/selectedFoodsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+                <!-- Daily totals shown here -->
+                <LinearLayout
+                    android:id="@+id/totalsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:weightSum="4"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:id="@+id/totalCalories"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Calories: 0 kcal"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:id="@+id/totalProtein"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Protein: 0g"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:id="@+id/totalCarbs"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Carbs: 0g"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:id="@+id/totalFats"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Fats: 0g"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+
+
+        <!-- Back Button -->
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back to Tracker"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#2C3E50"
+            android:textColor="@android:color/white" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

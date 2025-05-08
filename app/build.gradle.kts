@@ -48,6 +48,8 @@ dependencies {
     implementation("commons-codec:commons-codec:1.16.1")
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation ("com.google.android.material:material:<latest-version>")
+    implementation ("com.google.android.exoplayer:exoplayer-core:2.18.7")
+    implementation ("com.google.android.exoplayer:exoplayer-ui:2.18.7")
 
 
 

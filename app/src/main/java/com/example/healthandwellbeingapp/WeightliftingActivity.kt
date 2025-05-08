@@ -3,17 +3,29 @@ package com.example.healthandwellbeingapp
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
+import android.widget.MediaController
 import android.widget.VideoView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 class WeightliftingActivity : AppCompatActivity() {
 
+    private lateinit var videoShoulders: VideoView
+    private lateinit var videoLegs: VideoView
+    private lateinit var videoBack: VideoView
+    private lateinit var videoChest: VideoView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weightlifting)
 
-        // Setup detailed workout dialogs for each split
+
+        videoShoulders = findViewById(R.id.videoShoulders)
+        videoLegs = findViewById(R.id.videoLegs)
+        videoBack = findViewById(R.id.videoBack)
+        videoChest = findViewById(R.id.videoChest)
+
+        // Setup workout dialogs for each split
         setupSplitDialog(
             R.id.btnShouldersSplit,
             "Shoulders Workout Split",
@@ -61,15 +73,27 @@ class WeightliftingActivity : AppCompatActivity() {
             🔸 Tricep Pushdowns – 3 sets of 15 reps
             """.trimIndent()
         )
+
+        // Setup videos for each VideoView
+        setupVideo(videoShoulders, R.raw.legs_video)
+        setupVideo(videoLegs, R.raw.chest_video)
+        setupVideo(videoBack, R.raw.back_video)
+        setupVideo(videoChest, R.raw.legs_video)
     }
 
-    // If using local videos, call this with your video resources
-    private fun setupVideo(videoViewId: Int, videoResource: Int) {
-        val videoView = findViewById<VideoView>(videoViewId)
+    private fun setupVideo(videoView: VideoView, videoResource: Int) {
         val uri = Uri.parse("android.resource://${packageName}/$videoResource")
         videoView.setVideoURI(uri)
-        videoView.setOnPreparedListener { it.isLooping = true }
-        videoView.start()
+
+        // Add MediaControls
+        val mediaController = MediaController(this)
+        mediaController.setAnchorView(videoView)
+        videoView.setMediaController(mediaController)
+
+        videoView.setOnPreparedListener { mp ->
+            mp.isLooping = true
+
+        }
     }
 
     private fun setupSplitDialog(buttonId: Int, title: String, message: String) {
@@ -80,5 +104,13 @@ class WeightliftingActivity : AppCompatActivity() {
                 .setPositiveButton("Close", null)
                 .show()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        videoShoulders.stopPlayback()
+        videoLegs.stopPlayback()
+        videoBack.stopPlayback()
+        videoChest.stopPlayback()
     }
 }
